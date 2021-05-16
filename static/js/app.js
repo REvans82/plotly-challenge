@@ -42,42 +42,26 @@ function createCharts(sample){
         Plotly.newPlot("bar", barData, barLayout);
 
 //Creating Bubble Chart
-        function createCharts(sample){
+        let trace1 = {
+            x: otu_ids,
+            y: sample_values,
+            text: otu_labels,
+            mode: "markers",
+            marker: {
+                size: sample_values,
+                color: otu_ids
+             }
+        };
+        var bubbleData = [trace1];
 
-            var xValue = samples.otu_ids;
-            var yValue = samples.sample_values;
-            // d3.json("data/samples.json").then((data) => {
-            //     // var samples = data.samples;
-            //     // var outputArray = samples.filter(sampleNo => sampleNo.id == sample);
-            //     // var output = outputArray[0];
-            //     // var sample_values = output.sample_values;
-            //     // var otu_ids = output.otu_ids;
-            //     // var otu_labels = output.otu_labels;
-                let trace1 = {
-                    x: xValue,
-                    y: yValue,
-                    text: samples.otu_lables,
-                    mode: "markers",
-                    marker: {
-                        size: samples.sample_values,
-                        color: samples.otu_ids,
-                        }
-                };
-                var bubbleData = [trace1];
-
-                var bubbleLayout = {
-                    xaxis: {title:"OTU ID"},
-                    height: 600,
-                    width: 1200,
-                    title: "Bacteria Cultures Per Sample Bubble Chart",
-                    
-                };
+        var bubbleLayout = {
+            xaxis: {title:"OTU ID"},
+            height: 600,
+            width: 1200,
+            title: "Bacteria Cultures Per Sample Bubble Chart"                  
+                };              
                 
-                
-                Plotly.newPlot("bubble", bubbleData, bubbleLayout);
-
-
-
+        Plotly.newPlot("bubble", bubbleData, bubbleLayout);
     });
 }
 // Initializing 
